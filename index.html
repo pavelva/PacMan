@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>PacMan</title>
+
+    <link rel="stylesheet" type="text/css" href="Style/main.css">
+    <link rel="stylesheet" type="text/css" href="Style/login_registration.css">
+    <link rel="stylesheet" type="text/css" href="Style/game.css">
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+
+
+
+    <script src="Scripts/jquery/jquery-2.1.3.js"></script>
+    <script src="Scripts/jquery/jquery-2.1.3.min.js"></script>
+
+    <script type="text/javascript" src="Scripts/global.js"></script>
+    <script type="text/javascript" src="Scripts/pac_man.js"></script>
+
+</head>
+<body>
+
+<img src="Images/logo.gif" id="logo">
+<nav>
+    <a id="aGame">Game</a>
+    <a id="aAbout">About</a>
+    <a id="aLogout">Logout</a>
+
+</nav>
+<main>
+    <div id="login_registration" class="content">
+        <h2 id="welcome">
+            Welcome To PacMan 2015!
+        </h2>
+
+        <div id="login" class="id">
+            <div class="loginPage first">
+                <label for="userName">User Name: </label>
+                <input type="text" id="txtUserName" name="userName">
+                <label for="password"> Password: </label>
+                <input type="password" id="txtPass" name="password">
+                <label id="lblLoginError"> *Incorrect Input </label>
+                <input type="button" class="btn left" value="Login" onclick="login()">
+            </div>
+        </div>
+        <div id="registration" class="id">
+            <form id="registerForm" class="loginPage second" method="post" enctype="text/plain" action="mailto:pavelva@post.bgu.ac.il">
+                <label for="userName">User Name: </label>
+                <input type="text" id="txtRUserName" name="userName">
+                <label for="password"> Password: </label>
+                <input type="password" id="txtRPass" name="password">
+                <label for="name"> FirstName: </label>
+                <input type="text" id="txtRName" name="name">
+                <label for="lName"> Last Name: </label>
+                <input type="text" id="txtRLName" name="lName">
+                <label for="email"> Email: </label>
+                <input type="text" id="txtREmail" name="email">
+                <label for="bDate"> BirthDay: </label>
+                <input type="date" id="txtRDate" name="bDate">
+
+                <label id="lblRegisterError"> *Incorrect Input </label>
+
+                <input type="button" class="btn left" value="Register" onclick="register()">
+        </div>
+
+    </div>
+
+    <div id="game" class="content">
+
+
+        <h3 id="userName"></h3>
+        <div id="settings">
+
+            <lable for="balls">Number Of Balls</lable><br/>
+            <input type="text" id="txtBalls" name="balls" value="50"><br/>
+            <lable for="small ball color">Small Ball Color</lable><br/>
+            <select name="small ball color" id="smallColor">
+                <option value="black">Black</option>
+                <option value="gray">Gray</option>
+                <option value="brown">Brown</option>
+            </select><br/>
+            <lable for="mid ball color">Medium Ball Color</lable><br/>
+            <select name="mid ball color" id="midColor">
+                <option value="purple">Purple</option>
+                <option value="lightblue">Light Blue</option>
+                <option value="pink">Pink</option>
+            </select><br/>
+            <lable for="high ball color">High Ball Color</lable><br/>
+            <select name="high ball color" id="highColor">
+                <option value="orange">Orange</option>
+                <option value="red">Red</option>
+                <option value="darkred">Dark Red</option>
+            </select><br/>
+            <lable for="time">Game Time</lable><br/>
+            <select name="time" id="time">
+                <option value="60">60</option>
+                <option value="90">90</option>
+                <option value="120">120</option>
+            </select><br/>
+            <lable for="monsters">Amount Of Monsters</lable><br/>
+            <select name="monsters" id="monstersCount">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select><br/>
+
+        </div>
+
+        <input type="Button" class="btn" value="Start" onclick="HideStart();startGame()">
+
+        <dialog id="pacManDialog">
+            <div id="gameHeader">
+                <input id="btnClose" type="button" value="X" onclick="Stop()">
+                SCORE:
+                <input id="lblScore" type="text"  disabled/>
+                TIME:
+                <input id="lblTime" type="text" disabled/>
+                MAX TIME:
+                <input id="lblMaxTime" type="text" disabled/>
+                LIFES:
+                <input id="lblLifes" type="text" disabled/>
+                <input id="btnPause" type="button" value="Pause" onclick="HidePause();Pause()">
+                <input id="btnStart" type="button" value="Start" onclick="HideStart();Start()">
+            </div>
+            <canvas id="canvas" height="480" width="480"></canvas>
+        </dialog>
+    </div>
+
+    <dialog id="aboutDialog">
+        <h2>About</h2>
+        Submited By:
+        <p class="student">Ronen Liberzon</p>
+        <p class="student">Alex Zeltser</p>
+        <p class="student">Pavel Vaisburg</p>
+        Jquery:
+        <p class="student">
+            We have used JQuery to implement HTML animations, setting listeners
+            and manipulating the DOM.
+        </p>
+        Templates:
+        <p class="student">
+            We have not used templates.
+        </p>
+        Struggles:
+        <p class="student">
+            Making the website suitable to 800X600 resolution.
+        </p>
+        <p class="student">
+            Implementing shapes motion in the vanvas (without bugs).
+        </p>
+
+        <input type="button" class="btn" value="Close" onclick="document.getElementById('aboutDialog').close();">
+    </dialog>
+
+    <audio id="eatBonus">
+        <source src="Sound/pacman_chomp.wav" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="music">
+        <source src="Sound/pacman_beginning.wav" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="death">
+        <source src="Sound/pacman_death.wav" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</main>
+
+<footer>
+    PacMan 2015 - Contact Us:
+    <a href="mailto::pavelva@post.bgu.ac.il">Pavel Vaisburg, </a>
+    <a href="mailto::ronenlib@post.bgu.ac.il">Ronen Liberzon, </a>
+    <a href="mailto::alexzel@post.bgu.ac.il">Alex Seltser</a>
+</footer>
+</body>
+</html>

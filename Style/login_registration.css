@@ -1,0 +1,89 @@
+#login_registration{
+    width:100%;
+    padding: 10px 0 0 0;
+}
+
+#login_registration h2{
+    display: block;
+    width:250px;
+    color:yellow ;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.id{
+    float: left;
+    width:45%;
+}
+
+.id input[type="button"]{
+    width:200px;
+    height:50px;
+    margin:30px auto;
+}
+
+#login_registration dialog{
+    width:600px;
+    background: none;
+    position:fixed;
+    margin:0 auto;
+    top:150px;
+}
+
+.loginPage{
+    width:100%;
+    border-radius: 10px;
+    /*border:2px solid darkblue;*/
+    /*background: lightblue;*/
+}
+
+.loginPage.first{
+    height: 300px;
+    margin-left: 10px;
+}
+
+.loginPage.second{
+    /*height:600px;*/
+    margin-left: 50px;
+}
+
+.loginPage label{
+    display: block;
+    width:300px;
+    margin:0  auto;
+    margin-top: 5px;
+    font-size: 1em;
+    color: darkblue;
+}
+
+.loginPage label:last-of-type{
+    font-size: 0.6em;
+    color:red;
+    visibility: hidden;
+}
+
+.loginPage input[type="text"], input[type="date"], input[type="password"]{
+    display: block;
+    width:300px;
+    font-size: 1em;
+    margin:0 auto;
+    padding:0 2px;
+    color: #fff200;
+    background: rgba(0,0,0,0.8);
+
+}
+.loginPage .btn{
+    display: block;
+    width:150px;
+    margin:5px auto !important;
+}
+
+.loginPage .btn.left{
+    float:left;
+    margin-left:60px !important;
+}
+
+.loginPage .btn.right{
+    float: right;
+    margin-right:75px !important;
+}
