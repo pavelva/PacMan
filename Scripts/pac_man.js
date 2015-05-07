@@ -177,8 +177,7 @@ function InitBoard(ballsNum,monstersNum) {
 
 
     winScore = small_ball*5 + mid_ball*15 + high_ball*25;
-    //alert('small: ' + small_ball + ' med: ' + mid_ball + 'high: ' + high_ball);
-    //alert('WIN: ' + winScore + ' small: ' + small_ball + ' mid: ' + mid_ball + ' high: ' + high_ball);
+
     var monster_remain = monstersNum;
     start_time = new Date();
 
@@ -223,9 +222,6 @@ function InitBoard(ballsNum,monstersNum) {
     InitBonusMonster();
 
     InitMonsters(monstersNum);
-    //if(small_ball!=0 || mid_ball!=0 || high_ball!=0)
-    //alert('small: ' + small_ball + ' med: ' + mid_ball + 'high: ' + high_ball);
-
 }
 function InitPacMan(){
     while(!packMan.i)
@@ -330,8 +326,6 @@ function Draw() {
 
                 if((board[i][j] & Cell.BonusMonster) == Cell.BonusMonster)
                     DrawBonusMonster(center);
-
-
             }
         }
     }
@@ -416,13 +410,9 @@ function DrawBall(center, type){
     context.arc(center.x, center.y, 10, 0, 2* Math.PI);
     context.fillStyle = sColor; //color
     context.fill();
-
-    //context.beginPath();
-    //context.arc(center.x, center.y, 7, 0, 2* Math.PI);
     context.lineWidth = 1;
+
     if(type == Cell.MidBall) {
-        //context.strokeStyle = "white"; //color
-        //context.stroke();
         context.fillStyle = mColor; //color
         context.fill();
 
@@ -432,8 +422,6 @@ function DrawBall(center, type){
         context.fillText("15",center.x - 7, center.y + 4);
     }
     else if(type == Cell.HighBall) {
-        //context.strokeStyle = " white"; //color
-        //context.stroke();
         context.fillStyle = hColor; //color
         context.fill();
 
@@ -443,8 +431,6 @@ function DrawBall(center, type){
         context.fillText("25",center.x - 7, center.y + 4);
     }
     else{
-        //context.strokeStyle = "white"; //color
-        //context.stroke();
 
         context.beginPath();
         context.font = "normal 12px Arial"

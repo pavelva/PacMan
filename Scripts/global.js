@@ -32,9 +32,6 @@ $(document).ready(function(){
        document.getElementById("aboutDialog").showModal();
     });
     $("#login_registration").fadeIn(500);
-
-    //executeLogin(users[0]);
-    //Start();
 });
 
 
